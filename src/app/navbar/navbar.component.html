@@ -2,7 +2,7 @@
   <button class="navbar-toggler navbar-toggler-right" type="button" (click)="isCollapsed = !isCollapsed" aria-controls="navbarSupportedContent" aria-expanded="false">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#"><span class="font-weight-bold"><span class="title-first">B</span><span class="title-rest">anana</span></span> Recipes</a>
+  <a class="navbar-brand" href="#"><span class="font-weight-bold"><span class="title-first">B</span><span class="title-rest">anana</span></span> Food</a>
 
   <div class="collapse navbar-collapse"
     (collapsed)="collapsed($event)"
@@ -12,20 +12,30 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">USA</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Spain</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
-      <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
+     
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item navbar-left dropdown" dropdown (onToggle)="toggled($event)">
         <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" aria-haspopup="true" aria-expanded="false" dropdownToggle>
-          Dropdown link
+          World
         </a>
         <div class="dropdown-menu" dropdownMenu aria-labelledby="navbar-dropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Spain</a>
+          <a class="dropdown-item" href="#">United Kingdom</a>
+          <a class="dropdown-item" href="#">United States</a>
         </div>
       </li>
     </ul>
@@ -40,79 +50,9 @@
 </nav>
 
 <nav>
-   <ol class="breadcrumb">
-     <li class="breadcrumb-item"><a href="#">Home</a></li>
-     <li class="breadcrumb-item"><a href="#">Library</a></li>
-     <li class="breadcrumb-item active">Data</li>
-   </ol>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="#">Library</a></li>
+    <li class="breadcrumb-item active">Data</li>
+  </ol>
 </nav>
-<!--  <nav class="navbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" (click)="isCollapsed = !isCollapsed">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                  
-      </button>
-      <a class="navbar-brand " href="#"></a>
-    </div>
-    <div (collapsed)="collapsed($event)"
-     (expanded)="expanded($event)"
-     [collapse]="isCollapsed">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li class="dropdown" dropdown (onToggle)="toggled($event)">
-          <a class="dropdown-toggle" href="#" id="simple-dropdown" dropdownToggle>Page 1 <span class="caret"></span></a>
-          <ul class="dropdown-menu" dropdownMenu aria-labelledby="simple-dropdown">
-            <li><a class="dropdown-item" href="#">Page 1-1</a></li>
-            <li><a class="dropdown-item" href="#">Page 1-2</a></li>
-            <li><a class="dropdown-item" href="#">Page 1-3</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Page 2</a></li>
-        <li><a href="#">Page 3</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>-->
-  
-<div class="container">
-  <h3>Collapsible Navbar</h3>
-  <p>In this example, the navigation bar is hidden on small screens and replaced by a button in the top right corner (try to re-size this window).
-  <p>Only when the button is clicked, the navigation bar will be displayed.</p>
-</div>
-
-<h1 *ngFor="let item of list">{{item}}</h1>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Your Website 2017</span>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li class="list-inline-item"><a href="#">Privacy Policy</a>
-                        </li>
-                        <li class="list-inline-item"><a href="#">Terms of Use</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
