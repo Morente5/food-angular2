@@ -1,0 +1,246 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+// Global Components
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  overflow-x: hidden;
+  @include body-font;
+}
+
+.text-muted {
+  color: $gray-light;
+}
+
+.text-primary {
+  color: $theme-primary !important;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+p.large {
+  font-size: 16px;
+}
+
+a,
+a:hover,
+a:focus,
+a:active,
+a.active {
+  outline: none;
+}
+
+a {
+  color: $theme-primary;
+}
+
+a:hover,
+a:focus,
+a:active,
+a.active {
+  color: darken($theme-primary, 10%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include heading-font;
+  font-weight: 700;
+}
+
+.img-centered {
+  margin: 0 auto;
+}
+
+.bg-light-gray {
+  background-color: $gray-lighter;
+}
+
+.bg-darkest-gray {
+  background-color: $gray-darker;
+}
+
+// Restyled Primary Buttons
+
+.btn-primary {
+  @include button-variant(white, $theme-primary, $theme-primary);
+  @include heading-font;
+  font-weight: 700;
+}
+
+.btn-xl {
+  @include button-variant(white, $theme-primary, $theme-primary);
+  @include heading-font;
+  font-weight: 700;
+  border-radius: 3px;
+  font-size: 18px;
+  padding: 20px 40px;
+}
+
+// Custom Navigation Bar
+
+.navbar-custom {
+  border-color: transparent;
+  .navbar-brand {
+    color: $theme-primary;
+    @include script-font;
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      color: darken($theme-primary, 10%);
+    }
+  }
+  .navbar-collapse {
+    border-color: fade-out(white, .02);
+  }
+  .navbar-toggle {
+    background-color: $theme-primary;
+    border-color: $theme-primary;
+    @include heading-font;
+    color: white;
+    font-size: 12px;
+    &:hover,
+    &:focus {
+      background-color: $theme-primary;
+    }
+  }
+  .nav-link {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .nav {
+    li {
+      a {
+        @include heading-font;
+        font-weight: 400;
+        letter-spacing: 1px;
+        color: white;
+        &:hover,
+        &:focus {
+          color: $theme-primary;
+          outline: none;
+        }
+      }
+    }
+  }
+  .navbar-nav>.active>a {
+    border-radius: 0;
+    color: white;
+    background-color: $theme-primary;
+  }
+  .navbar-nav>.active>a:hover,
+  .navbar-nav>.active>a:focus {
+    color: white;
+    background-color: darken($theme-primary, 10%);
+  }
+}
+
+
+// Global Section Styles
+
+section {
+  padding: 100px 0;
+  h2.section-heading {
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  h3.section-subheading {
+    font-size: 16px;
+    @include serif-font;
+    text-transform: none;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 75px;
+  }
+}
+
+@media(min-width:768px) {
+  section {
+    padding: 150px 0;
+  }
+}
+
+
+// Footer
+
+footer {
+  padding: 25px 0;
+  text-align: center;
+  span.copyright {
+    line-height: 40px;
+    @include heading-font;
+    text-transform: none;
+  }
+  ul.quicklinks {
+    margin-bottom: 0;
+    line-height: 40px;
+    @include heading-font;
+    text-transform: none;
+  }
+
+  &.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 120px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+
+    & .container {
+      padding-top: 5px;
+      height: 100%;
+      line-height: 0;
+    }
+  }
+
+}
+
+.btn:focus,
+.btn:active,
+.btn.active,
+.btn:active:focus {
+  outline: none;
+}
+
+
+// Highlight Color Customization
+
+::-moz-selection {
+  text-shadow: none;
+  background: $theme-primary;
+}
+
+::selection {
+  text-shadow: none;
+  background: $theme-primary;
+}
+
+img::selection {
+  background: transparent;
+}
+
+img::-moz-selection {
+  background: transparent;
+}
+
+body {
+  webkit-tap-highlight-color: $theme-primary;
+}
+
+.title-first {
+  color: $theme-accent;
+}
+
+.title-rest {
+  color: $theme-primary;
+}
