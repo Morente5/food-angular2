@@ -30,12 +30,12 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item navbar-left dropdown" dropdown (onToggle)="toggled($event)">
         <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" aria-haspopup="true" aria-expanded="false" dropdownToggle>
-          World
+          {{countrySel}}
         </a>
         <div class="dropdown-menu" dropdownMenu aria-labelledby="navbar-dropdown">
-          <a class="dropdown-item" href="#">Spain</a>
-          <a class="dropdown-item" href="#">United Kingdom</a>
-          <a class="dropdown-item" href="#">United States</a>
+          <span *ngFor="let country of countries">
+          <a class="dropdown-item" href="#" *ngIf="country !== countrySel">{{country}}</a>
+          </span>
         </div>
       </li>
     </ul>
@@ -47,12 +47,4 @@
     </form>
   </div>
 
-</nav>
-
-<nav>
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Home</a></li>
-    <li class="breadcrumb-item"><a href="#">Library</a></li>
-    <li class="breadcrumb-item active">Data</li>
-  </ol>
 </nav>

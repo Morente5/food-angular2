@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  selector: 'app-navbar-top',
+  templateUrl: './navbar-top.component.html',
+  styleUrls: ['./navbar-top.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarTopComponent implements OnInit {
+	private countrySel;
 	// Collapsed by default
 	public isCollapsed = true;
 
@@ -24,7 +25,7 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+  	//countrySel
   }
 
 }

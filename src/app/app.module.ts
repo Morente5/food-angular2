@@ -8,18 +8,23 @@ import { CollapseModule } from 'ng2-bootstrap';
 import { DropdownModule } from 'ng2-bootstrap';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarTopComponent } from './navbar/navbar-top/navbar-top.component';
+import { NavbarBreadcrumbsComponent } from './navbar/navbar-breadcrumbs/navbar-breadcrumbs.component';
 import { FooterComponent } from './footer/footer.component';
-import { SectionAlbumComponent } from './section-album/section-album.component';
-import { SectionNotfoundComponent } from './section-notfound/section-notfound.component';
+import { SectionNotfoundComponent } from './section/section-notfound/section-notfound.component';
+import { SectionProductalbumComponent } from './section/section-productalbum/section-productalbum.component';
+import { SectionProductdetailsComponent } from './section/section-productdetails/section-productdetails.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
+    NavbarTopComponent,
+    NavbarBreadcrumbsComponent,
     FooterComponent,
-    SectionAlbumComponent,
-    SectionNotfoundComponent
+    SectionNotfoundComponent,
+    SectionNotfoundComponent,
+    SectionProductalbumComponent,
+    SectionProductdetailsComponent
   ],
   imports: [
     BrowserModule,
