@@ -10,12 +10,16 @@ import { DropdownModule } from 'ng2-bootstrap';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { SectionAlbumComponent } from './section-album/section-album.component';
+import { SectionNotfoundComponent } from './section-notfound/section-notfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    SectionAlbumComponent,
+    SectionNotfoundComponent
   ],
   imports: [
     BrowserModule,

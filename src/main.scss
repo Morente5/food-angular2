@@ -244,3 +244,11 @@ body {
 .title-rest {
   color: $theme-primary;
 }
+
+.card {
+  width: 50%;
+  img {
+    height: 100px;
+    width: 100%
+  }
+}
