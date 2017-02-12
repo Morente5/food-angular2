@@ -1,8 +1,9 @@
 <nav class="navbar navbar-custom navbar-toggleable-md">
+
   <button class="navbar-toggler navbar-toggler-right" type="button" (click)="isCollapsed = !isCollapsed" aria-controls="navbarSupportedContent" aria-expanded="false">
-    <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
   </button>
-  <a class="navbar-brand" href="#"><span class="font-weight-bold"><span class="title-first">B</span><span class="title-rest">anana</span></span> Food</a>
+  <a class="navbar-brand" [routerLink]="['/']"><span class="font-weight-bold"><span class="title-first">B</span><span class="title-rest">anana</span></span> Food</a>
 
   <div class="collapse navbar-collapse"
     (collapsed)="collapsed($event)"
@@ -12,36 +13,25 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">USA</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Spain</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-     
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item navbar-left dropdown" dropdown (onToggle)="toggled($event)">
-        <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" aria-haspopup="true" aria-expanded="false" dropdownToggle>
-          {{countrySel}}
+      <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
+        <a class="nav-link dropdown-toggle" id="navbar-dropdown" aria-haspopup="true" aria-expanded="false" dropdownToggle>
+          {{countryName(countrySel)}}
         </a>
         <div class="dropdown-menu" dropdownMenu aria-labelledby="navbar-dropdown">
-          <span *ngFor="let country of countries">
-          <a class="dropdown-item" href="#" *ngIf="country !== countrySel">{{country}}</a>
+          <span *ngFor="let country of getCountries()">
+          <a class="dropdown-item" [routerLink]="['/'+country]" *ngIf="country !== countrySel">{{countryName(country)}}</a>
           </span>
         </div>
       </li>
+
+     
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <div class="input-group">
-        <input type="text" class="form-control ml-sm-2" placeholder="Search" aria-describedby="basic-addon1">
+        <input type="text" class="form-control my-2 my-sm-0" placeholder="Search" aria-describedby="basic-addon1">
         <button class="input-group-addon my-2 my-sm-0" type="submit" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></button>
       </div>
     </form>

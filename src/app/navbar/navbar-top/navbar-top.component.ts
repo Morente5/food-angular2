@@ -1,31 +1,58 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { FoodapiService } from '../../services/foodapi.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-navbar-top',
   templateUrl: './navbar-top.component.html',
-  styleUrls: ['./navbar-top.component.scss']
+  styleUrls: ['./navbar-top.component.scss'],
+  providers: [ FoodapiService ]
 })
 export class NavbarTopComponent implements OnInit {
-	private countrySel;
+	private countrySel = 'world';
 	// Collapsed by default
 	public isCollapsed = true;
 
 	public collapsed(event: any): void {
-	  console.log(event);
 	}
 
 	public expanded(event: any): void {
-	  console.log(event);
 	}
 
 	public toggled(open: boolean): void {
-	  console.log('Dropdown is now: ', open);
 	}
 
-  constructor() { }
+  constructor(
+  	private route: ActivatedRoute,
+  	private router: Router,
+  	private foodapiService: FoodapiService
+  ) {
 
-  ngOnInit() {
-  	//countrySel
   }
+
+  countryName(country: string): string {
+    return this.foodapiService.countryName(country);
+  }
+
+  getCountries(): Array<string> {
+    return this.foodapiService.getCountries();
+  }
+
+	// lower(country: string): string {
+ //  	return country.toLowerCase();
+ //  }
+  
+  ngOnInit() {
+  	// Subscribe to country changes
+  	this.foodapiService.getCountryObs().subscribe(
+  		country => this.countrySel = country
+  	);
+  }
+
+
+
+  
 
 }

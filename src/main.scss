@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  margin-bottom: 100px;  // Footer height minimum
   overflow-x: hidden;
   @include body-font;
 }
@@ -141,13 +141,25 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
     background-color: darken($theme-primary, 10%);
   }
+  .navbar-toggler {
+    padding: 0.15rem 0.50rem;
+
+    :focus {
+      outline: 5px auto darken($theme-primary, 10%);
+    }
+
+    &-icon i:before {
+      color: $theme-primary;
+      vertical-align: sub;
+    }
+  }
 }
 
 
 // Global Section Styles
 
 section {
-  padding: 100px 0;
+  padding: 20px 0;
   h2.section-heading {
     font-size: 40px;
     margin-top: 0;
@@ -163,12 +175,6 @@ section {
   }
 }
 
-@media(min-width:768px) {
-  section {
-    padding: 150px 0;
-  }
-}
-
 
 // Footer
 
@@ -176,13 +182,13 @@ footer {
   padding: 25px 0;
   text-align: center;
   span.copyright {
-    line-height: 40px;
-    @include heading-font;
+    text-align: left;
+    line-height: 30px;
     text-transform: none;
   }
   ul.quicklinks {
     margin-bottom: 0;
-    line-height: 40px;
+    line-height: 30px;
     @include heading-font;
     text-transform: none;
   }
@@ -192,11 +198,11 @@ footer {
     bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */
-    height: 60px;
-    line-height: 120px; /* Vertically center the text there */
+    height: 80px;
+    line-height: 30px; /* Vertically center the text there */
     background-color: #f5f5f5;
 
-    & .container {
+  .container-fluid, .container {
       padding-top: 5px;
       height: 100%;
       line-height: 0;
@@ -248,29 +254,31 @@ body {
 .card {
   position: relative;
   margin: 5px;
-  padding: 5px; 
-  :before{
+  height: 100%;
+
+  &-img-box {
+    width: 100%;
+    border:none;
+    border-radius: 50%;
+
+    :before {
       content: "";
       display: block;
-      padding-top: 100%;  /* ratio of 1:1*/
-  } 
-  &-img-wrapper {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border:none
+      padding-top: 100%;
+    }
   }
-  &-img-wrapper:before {
+
+  .card-img {
+    //background-image: url("https://static.openfoodfacts.org/images/products/325/622/167/5573/front_fr.19.full.jpg");
+    background-size: cover;
+    border-radius: 50%;
+    margin: 10px;
   }
-  img {
-    background-image: url("https://static.openfoodfacts.org/images/products/325/622/167/5573/front_fr.19.full.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
+  .card-text {
+    margin: 10px;
   }
   &-wrapper {
-    padding: 0
+    padding: 0px;
+    padding-bottom: 10px;
   }
 }

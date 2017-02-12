@@ -1,15 +1,30 @@
-<div class="album text-muted">
-  <div class="container">
-
-  <div class="row">
-    <div class="card-wrapper col-xs-6 col-sm-3 col-lg-2" *ngFor="let item of list">
-    <div class="card">
-      <div class="card-img-wrapper"></div>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+<section>
+  <div class="album text-muted container">
+    <div class="row" *ngIf="foodData">
+      <div class="pull-right col-xs-12">
+        Showing {{foodData.skip}}{{foodData.count}}
+      </div>
     </div>
+    <div class="row" *ngIf="foodData">
+      <div class="card-wrapper col-sm-6 col-md-3 col-lg-2"
+        *ngFor="let prod of foodData.products">
+      <div class="card">
+        <div class="card-img-box">
+          <div class='card-img'
+            [ngStyle]="{
+              'background-image': 'url(' + prod.image_url + ')'
+            }"
+          >
+          </div>
+        </div>
+        <div class="card-text">
+          <h6>{{prod.product_name}}</h6>
+        </div>
+      </div>
+      </div>
     </div>
-    
+    <div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+    </div></div>
   </div>
-
-  </div>
-</div>
+</section>
