@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, Params } from '@angular/router';
 
 // ng2-bootstrap modules
 import { CollapseModule } from 'ng2-bootstrap';
@@ -35,12 +35,7 @@ import { SectionProductdetailsComponent } from './section/section-productdetails
     HttpModule,
     RouterModule.forRoot( [
       { path: '', redirectTo: 'world', pathMatch: 'full' },
-      { path: 'world', component: SectionProductalbumComponent },
-      { path: 'usa', component: SectionProductalbumComponent },
-      { path: 'uk', component: SectionProductalbumComponent },
-      { path: 'spain', component: SectionProductalbumComponent },
-      { path: 'germany', component: SectionProductalbumComponent },
-      { path: 'france', component: SectionProductalbumComponent },
+      { path: ':country', component: SectionProductalbumComponent },
       { path: 'product/:id', component: SectionProductdetailsComponent },
       { path: '**', component: SectionNotfoundComponent }
     ] ),

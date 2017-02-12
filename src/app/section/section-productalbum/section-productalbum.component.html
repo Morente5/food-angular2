@@ -1,13 +1,13 @@
-<section>
+<section *ngIf="test">
   <div class="album text-muted container">
-    <div class="row" *ngIf="foodData">
+    <div class="row" *ngIf="products && foodData">
       <div class="pull-right col-xs-12">
-        Showing {{foodData.skip}}{{foodData.count}}
+        Showing {{products.length}} of {{foodData.count}}
       </div>
     </div>
-    <div class="row" *ngIf="foodData">
+    <div class="row" *ngIf="products">
       <div class="card-wrapper col-sm-6 col-md-3 col-lg-2"
-        *ngFor="let prod of foodData.products">
+        *ngFor="let prod of products">
       <div class="card" [routerLink]="['/product', prod.code]">
         <div class="card-img-box">
           <div class='card-img'
@@ -27,4 +27,13 @@
     <div class="modal-dialog modal-sm">
     </div></div>
   </div>
+    <div class="container-fluid" *ngIf="loading">
+      <div class="spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
 </section>
+

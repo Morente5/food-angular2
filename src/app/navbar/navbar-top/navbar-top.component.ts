@@ -40,19 +40,13 @@ export class NavbarTopComponent implements OnInit {
     return this.foodapiService.getCountries();
   }
 
-	// lower(country: string): string {
- //  	return country.toLowerCase();
- //  }
-  
   ngOnInit() {
   	// Subscribe to country changes
   	this.foodapiService.getCountryObs().subscribe(
   		country => this.countrySel = country
   	);
+
+    this.foodapiService.getRoute();
   }
-
-
-
-  
 
 }

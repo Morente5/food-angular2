@@ -19,7 +19,7 @@ export class FoodapiService {
 
 	private foodData: Subject<any> = new Subject<any>();
 
-  private searching = false;
+  private searching: Subject<boolean> = new Subject<boolean>();
 
   public countrySubject: Subject<string> = new Subject<string>();
 
@@ -27,14 +27,6 @@ export class FoodapiService {
     private http: Http,
     private router: Router,
   ) {
-    // Changes in route
-    router.events.subscribe(
-      nav => {
-        const tempCountry: string = nav.url.split('/')[1];
-        this.countrySubject.next(
-          (Object.keys(this.countries).indexOf(tempCountry) !== -1) ? tempCountry : 'world' );
-      }  // Set country. If country is in countries, set `country`, else set `world`
-    );
 
   }
 
@@ -47,13 +39,28 @@ export class FoodapiService {
   }
 
   countryURL(country: string): string {
+    console.log(country);
     return this.countries[country].baseURL;
   }
 
-
-
   getCountryObs(): Observable<string> {
     return this.countrySubject.asObservable();
+  }
+
+  watchLoading(): Observable<boolean> {
+    return this.searching.asObservable();
+  }
+
+  getRoute() {
+    // Changes in route
+    this.router.events.subscribe(
+      nav => {
+        const tempCountry: string = decodeURIComponent(nav.url).split(/\/|\?|\;/)[1];
+        console.log(tempCountry);
+        this.countrySubject.next(
+          (Object.keys(this.countries).indexOf(tempCountry) !== -1) ? tempCountry : 'world' );
+      }  // Set country. If country is in countries, set `country`, else set `world`
+    );
   }
 
   getURIparams(params: Object): string {
@@ -66,11 +73,11 @@ export class FoodapiService {
   getFoodJSON(country, parameters) {
     // AJAX Request
     let url: string = this.countryURL(country) + this.getURIparams(parameters);
-    this.searching = true;
-    this.http.get(url)
+    this.searching.next(true);
+    return this.http.get(url)
       .subscribe( response => {
         this.foodData.next(response.json());
-        this.searching = false;
+        this.searching.next(false);
         } );
 
   }
