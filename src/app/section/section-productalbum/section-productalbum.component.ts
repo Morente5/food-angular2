@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { FoodapiService } from '../../services/foodapi.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
@@ -11,7 +11,7 @@ import { ModalDirective } from 'ng2-bootstrap/modal';
   styleUrls: ['./section-productalbum.component.scss'],
   providers: [ FoodapiService ]
 })
-export class SectionProductalbumComponent implements OnInit, OnDestroy {
+export class SectionProductalbumComponent implements OnInit {
 	@ViewChild('childModal') public childModal: ModalDirective;
 
 	private foodData;
@@ -19,14 +19,9 @@ export class SectionProductalbumComponent implements OnInit, OnDestroy {
 	private page: number;
 
 	private country: string;
-	private parameters;
+	private reqParams;
 
 	private scrollable = true;
-
-	private queryParamaterValue: string;
-	private matrixParameterValue: string;
-	private querySub: any;
-	private matrixSub: any;
 
 	public showChildModal(): void {
 	  this.childModal.show();
@@ -41,7 +36,12 @@ export class SectionProductalbumComponent implements OnInit, OnDestroy {
   	private route: ActivatedRoute,
   	private router: Router
   ) {
-
+  	this.foodapiService.getParamsObs().subscribe(
+  		params => {
+  				this.country = params['country'];
+  				this.reload();
+  		}
+  	);
   }
 
   ngOnInit() {
@@ -50,16 +50,11 @@ export class SectionProductalbumComponent implements OnInit, OnDestroy {
   	onscroll = () => {
   		if (pageYOffset >= document.body.clientHeight - innerHeight + 80 ) {
   		  this.scrollable = false;
-  		  //this.foodapiService.getFoodJSON(this.countrySel, )
+  		  this.reqParams.page++;
+  		  this.reload();
   		  console.log('hey');
   		}
   	};
-
-  	this.route.params.subscribe(matrixParams => {
-  	  this.matrixParameterValue = matrixParams['matrixParameterName'];
-  	  console.log(this.matrixParameterValue);
-  	}
-  	);
 
   	this.products = new Array();
 
@@ -74,12 +69,8 @@ export class SectionProductalbumComponent implements OnInit, OnDestroy {
   		}
   	);
 
-  	// Subscribe to country changes
-  	this.foodapiService.getCountryObs().subscribe(
-  		country => this.country = country
-  	);
 
-  	this.parameters = {
+  	this.reqParams = {
   		'search_terms': '',  // Product
   		'tag_contains_0': 'brands',
   		'tag_0': '',  // Brand
@@ -92,22 +83,14 @@ export class SectionProductalbumComponent implements OnInit, OnDestroy {
   		'action': 'process',
   		'json': 1,
 		};
-
-		// Get country for the first time
-		this.country = this.router.url.split('/')[1];
-		// Initial Request
-		console.log(this.parameters);
-  	this.foodapiService.getFoodJSON(this.country, this.parameters);
-
+		setTimeout( () => this.router.navigate(['././#', { relativeTo: this.route }]), 2000 );
   }
 
-  ngOnDestroy() {
-      if (this.querySub) {
-        this.querySub.unsubscribe();
-      }
-      if (this.matrixSub) {
-        this.matrixSub.unsubscribe();
-      }
-    }
+  reload() {
+  			// Get country for the first time
+  			// Initial Request
+  			console.log(this.reqParams);
+  	  	this.foodapiService.getFoodJSON(this.country, this.reqParams);
+  	}
 
 }

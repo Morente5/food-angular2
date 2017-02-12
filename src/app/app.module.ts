@@ -35,12 +35,7 @@ import { SectionProductdetailsComponent } from './section/section-productdetails
     HttpModule,
     RouterModule.forRoot( [
       { path: '', redirectTo: 'world', pathMatch: 'full' },
-      { path: 'world', component: SectionProductalbumComponent },
-      { path: 'usa', component: SectionProductalbumComponent },
-      { path: 'uk', component: SectionProductalbumComponent },
-      { path: 'spain', component: SectionProductalbumComponent },
-      { path: 'germany', component: SectionProductalbumComponent },
-      { path: 'france', component: SectionProductalbumComponent },
+      { path: ':country', component: SectionProductalbumComponent },
       { path: 'product/:id', component: SectionProductdetailsComponent },
       { path: '**', component: SectionNotfoundComponent }
     ] ),

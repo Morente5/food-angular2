@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { FoodapiService } from '../../services/foodapi.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-navbar-top',
@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   providers: [ FoodapiService ]
 })
 export class NavbarTopComponent implements OnInit {
-	private countrySel = 'world';
+	private countrySel: string;
 	// Collapsed by default
 	public isCollapsed = true;
 
@@ -27,9 +27,9 @@ export class NavbarTopComponent implements OnInit {
   constructor(
   	private route: ActivatedRoute,
   	private router: Router,
-  	private foodapiService: FoodapiService
+  	private foodapiService: FoodapiService,
   ) {
-
+  	
   }
 
   countryName(country: string): string {
@@ -40,19 +40,22 @@ export class NavbarTopComponent implements OnInit {
     return this.foodapiService.getCountries();
   }
 
-	// lower(country: string): string {
- //  	return country.toLowerCase();
- //  }
-  
   ngOnInit() {
-  	// Subscribe to country changes
-  	this.foodapiService.getCountryObs().subscribe(
-  		country => this.countrySel = country
-  	);
+  	 // Subscribe to URI parameters
+  	this.foodapiService.getParamsObs().subscribe(
+  		params => {
+  			console.log(params['country'], 9);
+  				this.countrySel = params['country'];
+  		}
+  	); setTimeout( () => this.foodapiService.reloadParams(), 3000);
+  	
+  }
+  ngAfterViewInit() {
+  	
+  	
+
   }
 
 
-
-  
 
 }
