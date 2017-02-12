@@ -14,10 +14,12 @@ export class SectionNotfoundComponent implements OnInit {
 
   }
 
-    cancel() {
-      this.location.back();
+  cancel() {
+    this.location.back();
+  }
 
   ngOnInit() {
+  	
   }
 
 }
