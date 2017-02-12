@@ -59,14 +59,6 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
-.bg-light-gray {
-  background-color: $gray-lighter;
-}
-
-.bg-darkest-gray {
-  background-color: $gray-darker;
-}
-
 // Restyled Primary Buttons
 
 .btn-primary {
@@ -83,78 +75,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 18px;
   padding: 20px 40px;
 }
-
-// Custom Navigation Bar
-
-.navbar-custom {
-  border-color: transparent;
-  .navbar-brand {
-    color: $theme-primary;
-    @include script-font;
-    &:hover,
-    &:focus,
-    &:active,
-    &.active {
-      color: darken($theme-primary, 10%);
-    }
-  }
-  .navbar-collapse {
-    border-color: fade-out(white, .02);
-  }
-  .navbar-toggle {
-    background-color: $theme-primary;
-    border-color: $theme-primary;
-    @include heading-font;
-    color: white;
-    font-size: 12px;
-    &:hover,
-    &:focus {
-      background-color: $theme-primary;
-    }
-  }
-  .nav-link {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  .nav {
-    li {
-      a {
-        @include heading-font;
-        font-weight: 400;
-        letter-spacing: 1px;
-        color: white;
-        &:hover,
-        &:focus {
-          color: $theme-primary;
-          outline: none;
-        }
-      }
-    }
-  }
-  .navbar-nav>.active>a {
-    border-radius: 0;
-    color: white;
-    background-color: $theme-primary;
-  }
-  .navbar-nav>.active>a:hover,
-  .navbar-nav>.active>a:focus {
-    color: white;
-    background-color: darken($theme-primary, 10%);
-  }
-  .navbar-toggler {
-    padding: 0.15rem 0.50rem;
-
-    :focus {
-      outline: 5px auto darken($theme-primary, 10%);
-    }
-
-    &-icon i:before {
-      color: $theme-primary;
-      vertical-align: sub;
-    }
-  }
-}
-
 
 // Global Section Styles
 
@@ -174,19 +94,6 @@ section {
     margin-bottom: 75px;
   }
 }
-
-
-// Footer
-
-
-
-.btn:focus,
-.btn:active,
-.btn.active,
-.btn:active:focus {
-  outline: none;
-}
-
 
 // Highlight Color Customization
 
