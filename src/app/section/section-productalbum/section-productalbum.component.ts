@@ -37,12 +37,14 @@ export class SectionProductalbumComponent implements OnInit {
   constructor(
   	private foodapiService: FoodapiService,
   	private route: ActivatedRoute,
-  	private router: Router
+  	private router: Router,
+
   ) {
 
   }
 
   ngOnInit() {
+    
     this.parameters = {
       'search_terms': '',  // Product
       'tag_contains_0': 'brands',
