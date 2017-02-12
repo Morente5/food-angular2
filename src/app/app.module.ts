@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import { Routes, RouterModule, Params } from '@angular/router';
 
+import { Ng2BreadcrumbModule } from 'ng2-breadcrumb/ng2-breadcrumb';
+
 // ng2-bootstrap modules
 import { CollapseModule } from 'ng2-bootstrap';
 import { DropdownModule } from 'ng2-bootstrap';
@@ -43,7 +45,8 @@ import { SectionProductdetailsComponent } from './section/section-productdetails
     // ng2-bootstrap modules
     CollapseModule.forRoot(),
     DropdownModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    Ng2BreadcrumbModule.forRoot()
   ],
   providers: [
   ],
