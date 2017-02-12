@@ -29,7 +29,7 @@ import { SectionProductdetailsComponent } from './section/section-productdetails
     SectionNotfoundComponent,
     SectionNotfoundComponent,
     SectionProductalbumComponent,
-    SectionProductdetailsComponent
+    SectionProductdetailsComponent,
   ],
   imports: [
     BrowserModule,
