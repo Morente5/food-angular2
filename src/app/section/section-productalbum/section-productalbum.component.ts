@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, HostListener } from '@angular/core';
 import { FoodapiService } from '../../services/foodapi.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
 import { ModalDirective } from 'ng2-bootstrap/modal';
@@ -11,7 +11,7 @@ import { ModalDirective } from 'ng2-bootstrap/modal';
   styleUrls: ['./section-productalbum.component.scss'],
   providers: [ FoodapiService ]
 })
-export class SectionProductalbumComponent implements OnInit {
+export class SectionProductalbumComponent implements OnInit, OnDestroy {
 	@ViewChild('childModal') public childModal: ModalDirective;
 
 	private foodData;
@@ -23,6 +23,10 @@ export class SectionProductalbumComponent implements OnInit {
 
 	private scrollable = true;
 
+	private queryParamaterValue: string;
+	private matrixParameterValue: string;
+	private querySub: any;
+	private matrixSub: any;
 
 	public showChildModal(): void {
 	  this.childModal.show();
@@ -40,14 +44,6 @@ export class SectionProductalbumComponent implements OnInit {
 
   }
 
-  countryName(country: string): string {
-    return this.foodapiService.countryName(country);
-  }
-
-  getCountries(): Array<string> {
-    return this.foodapiService.getCountries();
-  }
-
   ngOnInit() {
 
   	// Detect bottom of the page
@@ -59,7 +55,14 @@ export class SectionProductalbumComponent implements OnInit {
   		}
   	};
 
+  	this.route.params.subscribe(matrixParams => {
+  	  this.matrixParameterValue = matrixParams['matrixParameterName'];
+  	  console.log(this.matrixParameterValue);
+  	}
+  	);
+
   	this.products = new Array();
+
   	// Subscribe to food data changes
   	this.foodapiService.getFoodObs().subscribe(
   		data => {
@@ -97,5 +100,14 @@ export class SectionProductalbumComponent implements OnInit {
   	this.foodapiService.getFoodJSON(this.country, this.parameters);
 
   }
+
+  ngOnDestroy() {
+      if (this.querySub) {
+        this.querySub.unsubscribe();
+      }
+      if (this.matrixSub) {
+        this.matrixSub.unsubscribe();
+      }
+    }
 
 }
