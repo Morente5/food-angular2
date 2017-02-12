@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { FoodapiService } from '../../services/foodapi.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import {NgIf, NgFor} from '@angular/common';
+import { NgIf, NgFor } from '@angular/common';
 
 import { ModalDirective } from 'ng2-bootstrap/modal';
 
@@ -106,9 +106,6 @@ export class SectionProductalbumComponent implements OnInit {
   }
 
   getFood() {
-    
-    // // Initial Request
-    // console.log(this.parameters);
     this.foodapiService.getFoodJSON(this.country, this.parameters);
   }
 

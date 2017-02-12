@@ -18,6 +18,7 @@ export class FoodapiService {
   };
 
 	private foodData: Subject<any> = new Subject<any>();
+  private product: Subject<any> = new Subject<any>();
 
   private searching: Subject<boolean> = new Subject<boolean>();
 
@@ -74,7 +75,7 @@ export class FoodapiService {
     // AJAX Request
     let url: string = this.countryURL(country) + this.getURIparams(parameters);
     this.searching.next(true);
-    return this.http.get(url)
+    this.http.get(url)
       .subscribe( response => {
         this.foodData.next(response.json());
         this.searching.next(false);
@@ -84,6 +85,16 @@ export class FoodapiService {
 
   getFoodObs(): Observable<any> {
     return this.foodData.asObservable();
+  }
+
+  getProductJSON(barcode) {
+    this.http.get(`http://world.openfoodfacts.org/api/v0/product/${barcode}.json`)
+      .subscribe( response => this.product.next(response.json()) );
+      console.log(response.json());
+  }
+
+  getProductObs(): Observable<any> {
+    return this.product.asObservable();
   }
 
 
