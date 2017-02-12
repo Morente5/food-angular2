@@ -126,35 +126,3 @@ body {
 .title-rest {
   color: $theme-primary;
 }
-
-.card {
-  position: relative;
-  margin: 5px;
-  height: 100%;
-
-  &-img-box {
-    width: 100%;
-    border:none;
-    border-radius: 50%;
-
-    :before {
-      content: "";
-      display: block;
-      padding-top: 100%;
-    }
-  }
-
-  .card-img {
-    //background-image: url("https://static.openfoodfacts.org/images/products/325/622/167/5573/front_fr.19.full.jpg");
-    background-size: cover;
-    border-radius: 50%;
-    margin: 10px;
-  }
-  .card-text {
-    margin: 10px;
-  }
-  &-wrapper {
-    padding: 0px;
-    padding-bottom: 10px;
-  }
-}
