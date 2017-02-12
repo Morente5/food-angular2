@@ -90,7 +90,6 @@ export class FoodapiService {
   getProductJSON(barcode) {
     this.http.get(`http://world.openfoodfacts.org/api/v0/product/${barcode}.json`)
       .subscribe( response => this.product.next(response.json()) );
-      console.log(response.json());
   }
 
   getProductObs(): Observable<any> {
