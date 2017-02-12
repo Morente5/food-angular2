@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { FoodapiService } from '../../services/foodapi.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
@@ -11,7 +11,7 @@ import { ModalDirective } from 'ng2-bootstrap/modal';
   styleUrls: ['./section-productalbum.component.scss'],
   providers: [ FoodapiService ]
 })
-export class SectionProductalbumComponent implements OnInit, OnDestroy {
+export class SectionProductalbumComponent implements OnInit {
 	@ViewChild('childModal') public childModal: ModalDirective;
 
 	private foodData;
@@ -22,11 +22,6 @@ export class SectionProductalbumComponent implements OnInit, OnDestroy {
 	private parameters;
 
 	private scrollable = true;
-
-	private queryParamaterValue: string;
-	private matrixParameterValue: string;
-	private querySub: any;
-	private matrixSub: any;
 
 	public showChildModal(): void {
 	  this.childModal.show();
@@ -54,12 +49,6 @@ export class SectionProductalbumComponent implements OnInit, OnDestroy {
   		  console.log('hey');
   		}
   	};
-
-  	this.route.params.subscribe(matrixParams => {
-  	  this.matrixParameterValue = matrixParams['matrixParameterName'];
-  	  console.log(this.matrixParameterValue);
-  	}
-  	);
 
   	this.products = new Array();
 
@@ -101,13 +90,5 @@ export class SectionProductalbumComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnDestroy() {
-      if (this.querySub) {
-        this.querySub.unsubscribe();
-      }
-      if (this.matrixSub) {
-        this.matrixSub.unsubscribe();
-      }
-    }
 
 }
