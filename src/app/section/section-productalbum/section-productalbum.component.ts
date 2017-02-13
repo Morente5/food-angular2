@@ -91,6 +91,7 @@ export class SectionProductalbumComponent implements OnInit {
     this.foodapiService.getCountryObs().subscribe(
       country => {
         this.country = country;
+        this.products = [];
         this.parameters.page = 1;
         this.getFood();
       }
